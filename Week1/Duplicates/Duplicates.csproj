@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="Duplicates.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="words.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

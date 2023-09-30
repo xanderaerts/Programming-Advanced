@@ -1,8 +1,10 @@
 ﻿using System;
 namespace Duplicates
 {
-    internal class Program {
-        static void Main(string[] args) {
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
 
             string[] array = File.ReadAllLines("words.txt");
 
@@ -23,7 +25,8 @@ namespace Duplicates
 
             List<string> doubles = dp.findDubble(array, inputStr);
 
-            for (int i = 0; i < doubles.Count; i++) {
+            for (int i = 0; i < doubles.Count; i++)
+            {
                 Console.WriteLine($"{doubles[i]}");
             }
         }
