@@ -1,4 +1,5 @@
-﻿namespace W1
+﻿using System;
+namespace Duplicates
 {
     internal class Program {
         static void Main(string[] args) {
@@ -7,19 +8,24 @@
 
             Duplicates dp = new Duplicates();
 
-
-            Console.WriteLine("Give 2 characters: ");
+            Console.WriteLine($"Give some characters: ");
 
             string inputStr = Console.ReadLine();
 
-            List<string> doubles = dp.findDubble(array, inputStr);
+            while (string.IsNullOrEmpty(inputStr))
+            {
+                Console.Clear();
+                Console.WriteLine($"Input can't be empty... \n");
+                Console.WriteLine($"Give some characters: ");
 
+                inputStr = Console.ReadLine();
+            }
+
+            List<string> doubles = dp.findDubble(array, inputStr);
 
             for (int i = 0; i < doubles.Count; i++) {
                 Console.WriteLine($"{doubles[i]}");
             }
-
-
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace W1
+namespace Duplicates
 {
     internal class Duplicates
     {
@@ -12,19 +12,50 @@ namespace W1
 
         public List<string> findDubble(string[] array, string inputStr)
         {
-
             List<string> matches = new List<string>();
 
-            for (int i = 0; i < array.Length; i++) {
+            int inputStrLenght = inputStr.Length, 
+                low = 0, 
+                high = array.Length - 1,
+                posFirst=0, 
+                diff = array[0].Length - inputStr.Length;
 
-                string firstChar = array[i].Substring(0, 2);
+            string newInput = inputStr;
 
+            for (int i = 0; i < diff; i++) {
+                newInput = newInput + "A";
+            }
+     
+            while (low <= high) {
+                int mid = (low + high) / 2;
+                                          
+                if (newInput.CompareTo(array[mid]) < 0)
+                {
+                    high = mid - 1;
+                }
+                else
+                {
+                    low = mid + 1;
+                }
 
-                if (firstChar == inputStr) {
-                    matches.Add(array[i]);                    
-                }            
+                if (high <=1) {
+                    break;
+                }
+
+                   posFirst = low;
             }
 
+            int j = posFirst;
+            string firstChar = array[j].Substring(0, inputStrLenght);
+
+            while (firstChar == inputStr) { 
+            if (firstChar == inputStr) {
+                matches.Add(array[j]);
+            }
+                j++;
+                firstChar = array[j].Substring(0, inputStrLenght);
+            } 
+                
             if (matches.Count > 0)
             {
                 return matches;
