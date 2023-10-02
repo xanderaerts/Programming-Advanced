@@ -6,16 +6,15 @@ namespace Missing
     {
         static void Main(string[] args)
         {
+            List<int> inputNumbersInt = new List<int>();
+
+            Missing missing = new Missing();
+
             Console.WriteLine("Give a sorrted array of number");
 
+
             string input = Console.ReadLine();
-
-            if(input == null){
-                input = "empty";
-            }
-
             string[] inputNumbersSplitted = input.Split(' ');
-            List<int> inputNumbersInt = new List<int>();
 
             foreach(string nr in inputNumbersSplitted){
                 try{
@@ -26,6 +25,18 @@ namespace Missing
                     Console.WriteLine("Somthing went wrong, you didn't give a number");
                     break;
                 } 
+            }
+
+
+            int missingNumber = missing.findMissing(inputNumbersInt);
+
+            if (missingNumber == -1)
+            {
+                Console.WriteLine($"No number missing");
+            }
+            else
+            {
+                Console.WriteLine($"{missingNumber}");
             }
 
             
