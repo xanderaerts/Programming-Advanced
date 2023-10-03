@@ -28,7 +28,7 @@ namespace Missing
             }
 
 
-            int missingNumber = missing.findMissing(inputNumbersInt);
+            double missingNumber = missing.findMissing(inputNumbersInt);
 
             if (missingNumber == -1)
             {
