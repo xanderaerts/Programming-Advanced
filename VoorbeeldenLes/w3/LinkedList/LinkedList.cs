@@ -14,7 +14,6 @@ namespace LinkedList
         }
     }
 
-
     public class LinkedList
     {
         public Node Head {get;set;}
@@ -45,16 +44,50 @@ namespace LinkedList
            else{
 
                 Last().Next = node;
-
            }
         }
 
         public void Remove(string data){
-            
+        if(Head.Data == data)
+            {
+                Head = Head.Next;
+                return;
+            }
+            else
+            {
+                Node current = Head;
+                Node previous = null;
+                while (current != null  && current.Data != data)
+                {
+                    previous = current;
+                    current = current.Next;
+                }
+                if(current == null)
+                {
+                    return;
+                }
+                else
+                {
+                    previous.Next = current.Next;
+                }
+    }
+
+
         }
 
         public bool Search(string data){
-            return true;
+            Node iterator = Head;
+
+            while(iterator != null){
+                
+                if(iterator.Data == data){
+                    return true;
+                }
+
+                iterator = iterator.Next;
+            }
+
+            return false;
         }
 
         public override string ToString()
