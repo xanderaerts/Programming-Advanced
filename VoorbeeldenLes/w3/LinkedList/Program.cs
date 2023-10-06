@@ -32,6 +32,33 @@
             list.Remove("druif");
             Console.WriteLine(list);
 
+
+            try{
+                Stack snoep = new Stack(3);
+
+                Console.WriteLine(snoep);
+
+                snoep.Push("m&m's");
+                snoep.Push("chocotoff");
+                snoep.Push("schepsnoep");
+
+                Console.WriteLine(snoep);
+
+                Console.WriteLine(snoep.Pop());
+                Console.WriteLine(snoep);
+                Console.WriteLine(snoep.Pop());
+                Console.WriteLine(snoep);
+                Console.WriteLine(snoep.Pop());
+                Console.WriteLine(snoep);
+                Console.WriteLine(snoep.Pop());
+                Console.WriteLine(snoep);
+            }
+            catch(Exception e){
+                Console.WriteLine(e.Message);
+            }
+
+
+
         }
     }
 }
