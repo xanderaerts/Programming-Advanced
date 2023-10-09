@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Duplicates
+namespace Module_01 
 {
-    internal class Duplicates
+    internal class Assingment
     {
         public string inputStr { get; set; }
 
-        public List<string> findDubble(string[] array, string inputStr)
+        public List<string> Duplicates(string[] array, string start)
         {
             List<string> matches = new List<string>();
 
