@@ -1,26 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Module_01 
 {
-    internal class Assingment
+    internal class Assignment
     {
         public string inputStr { get; set; }
 
-        public List<string> Duplicates(string[] array, string start)
+        public string Duplicates(string start,string filename)
         {
+            string[] array = File.ReadAllLines(filename);
+
+
             List<string> matches = new List<string>();
 
-            int inputStrLenght = inputStr.Length, 
+            int inputStrLenght = start.Length, 
                 low = 0, 
                 high = array.Length - 1,
                 posFirst=0, 
-                diff = array[0].Length - inputStr.Length;
+                diff = array[0].Length - start.Length;
 
-            string newInput = inputStr;
+            string newInput = start;
 
             for (int i = 0; i < diff; i++) {
                 newInput = newInput + "A";
@@ -46,10 +45,10 @@ namespace Module_01
             }
 
             int j = posFirst;
-            string firstChar = array[j].Substring(0, inputStrLenght);
+            string firstChar = array[j].Substring(0, start.Length);
 
-            while (firstChar == inputStr) { 
-            if (firstChar == inputStr) {
+            while (firstChar == start) { 
+            if (firstChar == start) {
                 matches.Add(array[j]);
             }
                 j++;
@@ -58,11 +57,11 @@ namespace Module_01
                 
             if (matches.Count > 0)
             {
-                return matches;
+                return string.Join(" ", matches);
             }
             else {
-                matches.Add("no match");
-                return matches;
+                
+                return "No duplicates found.";
             }
 
         }

@@ -1,43 +1,33 @@
 ﻿using System;
 
-namespace Missing 
+namespace Module_01 
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            List<int> inputNumbersInt = new List<int>();
 
-            Missing missing = new Missing();
-
-            Console.WriteLine("Give a sorrted array of number");
-
+            Assignment missing = new Assignment();
 
             string input = Console.ReadLine();
             string[] inputNumbersSplitted = input.Split(' ');
 
-            foreach(string nr in inputNumbersSplitted){
+            int[] inputNumbersInt = new int[inputNumbersSplitted.Length];
+            int i = 0;
+
                 try{
-                    int parsed = Int32.Parse(nr);
-                    inputNumbersInt.Add(parsed);
+                    foreach(string nr in inputNumbersSplitted){
+                        int parsed = Int32.Parse(nr);
+                        inputNumbersInt[i] = parsed;
+                        i++; 
+                    }  
+                    
+                    Console.WriteLine(missing.Missing(inputNumbersInt));
                 }
-                catch{
-                    Console.WriteLine("Somthing went wrong, you didn't give a number");
-                    break;
-                } 
-            }
+                catch { 
+                    Console.WriteLine("Crazy input!");
+                }
 
-
-            double missingNumber = missing.findMissing(inputNumbersInt);
-
-            if (missingNumber == -1)
-            {
-                Console.WriteLine($"No number missing");
-            }
-            else
-            {
-                Console.WriteLine($"{missingNumber}");
-            }
 
             
         }
