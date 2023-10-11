@@ -4,11 +4,10 @@ namespace Module_01
 {
     internal class Assignment
     {
-        public string inputStr { get; set; }
-
         public string Duplicates(string start,string filename)
         {
             string[] array = File.ReadAllLines(filename);
+
 
 
             List<string> matches = new List<string>();

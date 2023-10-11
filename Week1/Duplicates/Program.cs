@@ -8,18 +8,18 @@ namespace Module_01
             
             Assignment dp = new Assignment();
 
-            Console.WriteLine($"Give some characters: ");
 
             string inputStr = Console.ReadLine();
 
             while (string.IsNullOrEmpty(inputStr))
             {
                 Console.Clear();
-                Console.WriteLine($"Input can't be empty... \n");
-                Console.WriteLine($"Give some characters: ");
+                Console.WriteLine($"Crazy input!");
 
                 inputStr = Console.ReadLine();
             }
+
+        
 
            Console.WriteLine(dp.Duplicates(inputStr,"words.txt"));
 
