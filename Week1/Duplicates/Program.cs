@@ -1,4 +1,7 @@
-﻿using System;
+﻿using System; 
+using System.Collections.Generic;
+using System.IO;
+    
 namespace Module_01
 {
     internal class Program
@@ -10,18 +13,15 @@ namespace Module_01
 
 
             string inputStr = Console.ReadLine();
+            inputStr = inputStr.ToLower();
 
-            while (string.IsNullOrEmpty(inputStr))
-            {
-                Console.Clear();
+            if(string.IsNullOrWhiteSpace(inputStr)){         
                 Console.WriteLine($"Crazy input!");
-
-                inputStr = Console.ReadLine();
+                
             }
-
-        
-
-           Console.WriteLine(dp.Duplicates(inputStr,"words.txt"));
+            else{
+                Console.WriteLine(dp.Duplicates(inputStr,"words.txt"));
+            }
 
             
         }

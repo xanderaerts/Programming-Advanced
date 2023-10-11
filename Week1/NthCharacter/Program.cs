@@ -1,8 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 
-namespace Module_01{
-    internal class Program{
-        static void Main(string[] args){
+namespace Module_01
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
 
             Assignment assignment = new Assignment();
 
@@ -15,8 +20,7 @@ namespace Module_01{
             }
             catch 
             {
-                Console.WriteLine("error lol");
-                throw;
+                Console.WriteLine("Crazy input!");
             }
 
         }

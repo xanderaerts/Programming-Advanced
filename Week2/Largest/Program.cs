@@ -1,28 +1,13 @@
 ﻿using System; 
-namespace Largest{
+namespace Module_02{
     internal class Program{
         static void Main(string[] args){
-            Console.WriteLine("Give me some numbers: ");
 
             string input = Console.ReadLine();
 
-            if(input == null){
-                input = "empty";
-            }
+            Assignment assignment = new Assignment();
 
-            string[] inputNumbersSplitted = input.Split(' ');
-            List<int> inputNumbersInt = new List<int>();
-
-            foreach(string nr in inputNumbersSplitted){
-                try{
-                    int parsed = Int32.Parse(nr);
-                    inputNumbersInt.Add(parsed);
-                }
-                catch{
-                    Console.WriteLine("Somthing went wrong, you didn't give a number");
-                    break;
-                } 
-            }
+            Console.WriteLine(assignment.Largest(input));
 
         }
 

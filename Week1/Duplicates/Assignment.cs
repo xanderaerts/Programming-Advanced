@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Collections.Generic;
 
 namespace Module_01 
 {
@@ -6,7 +8,7 @@ namespace Module_01
     {
         public string Duplicates(string start,string filename)
         {
-            string[] array = File.ReadAllLines(filename);
+            string[] array  = File.ReadAllLines(filename);
 
 
 
