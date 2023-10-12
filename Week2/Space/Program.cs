@@ -18,8 +18,14 @@ namespace Module_02{
 
             }while(!string.IsNullOrWhiteSpace(input));
             
-
-            Console.Write($"{assignment.Sapce(input)}");
+            try
+            {
+                Console.Write($"{assignment.Sapce(input)}");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);    
+            }
 
         }
     }
