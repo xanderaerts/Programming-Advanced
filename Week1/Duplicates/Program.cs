@@ -13,7 +13,6 @@ namespace Module_01
 
 
             string inputStr = Console.ReadLine();
-            inputStr = inputStr.ToLower();
 
             try{
                 Console.WriteLine(dp.Duplicates(inputStr,"words.txt"));   

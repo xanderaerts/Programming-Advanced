@@ -11,6 +11,8 @@ namespace Module_01
 
             if(start == "" || start == null) throw new Exception("Crazy input!");
 
+            start = start.ToLower();
+
             string[] array  = File.ReadAllLines(filename);
             
             List<string> res = new List<string>();
@@ -44,26 +46,28 @@ namespace Module_01
                     break;
                 }
 
-                   posFirst = low;
+                posFirst = low;
             }
 
             int j = posFirst;
-            string firstChar = array[j].Substring(0, start.Length);
+            string currentElement = array[j];
+            string firstChar = currentElement.Substring(0, start.Length);
 
             while (firstChar == start && j < array.Length) { 
 
-                if(res.Contains(array[j])){
+                if(res.Contains(currentElement)){
                     if (firstChar == start) {
-                        matches.Add(array[j]);
+                        matches.Add(currentElement);
                         j++;
-                        firstChar = array[j].Substring(0, inputStrLenght);
+                        firstChar = currentElement.Substring(0, inputStrLenght);
                     }   
                 }
                 else{
-                    res.Add(array[j]);
+                    res.Add(currentElement);
                     j++;
-                    firstChar = array[j].Substring(0, inputStrLenght);
+                    firstChar = currentElement.Substring(0, inputStrLenght);
                 }
+                currentElement = array[j];
             }
             if (matches.Count > 0)
             {
