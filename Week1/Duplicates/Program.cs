@@ -15,13 +15,17 @@ namespace Module_01
             string inputStr = Console.ReadLine();
             inputStr = inputStr.ToLower();
 
-            if(string.IsNullOrWhiteSpace(inputStr)){         
-                Console.WriteLine($"Crazy input!");
+            try
+            {
+                Console.WriteLine(dp.Duplicates(inputStr,"words.txt"));   
+            }
+            catch (Exception e)
+            {
                 
-            }
-            else{
-                Console.WriteLine(dp.Duplicates(inputStr,"words.txt"));
-            }
+                Console.WriteLine($"Crazy input!");
+            } 
+                
+                
 
             
         }

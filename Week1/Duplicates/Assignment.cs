@@ -8,6 +8,9 @@ namespace Module_01
     {
         public string Duplicates(string start,string filename)
         {
+
+            if(start == "" || start == null) throw new Exception();
+
             string[] array  = File.ReadAllLines(filename);
 
 
