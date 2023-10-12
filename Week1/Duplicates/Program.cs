@@ -15,15 +15,12 @@ namespace Module_01
             string inputStr = Console.ReadLine();
             inputStr = inputStr.ToLower();
 
-            try
-            {
+            try{
                 Console.WriteLine(dp.Duplicates(inputStr,"words.txt"));   
             }
-            catch (Exception e)
-            {
-                
-                Console.WriteLine($"Crazy input!");
-            } 
+            catch(Exception e) {
+                Console.WriteLine(e.Message);
+            }
                 
                 
 

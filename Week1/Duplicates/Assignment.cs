@@ -9,12 +9,11 @@ namespace Module_01
         public string Duplicates(string start,string filename)
         {
 
-            if(start == "" || start == null) throw new Exception();
+            if(start == "" || start == null) throw new Exception("Crazy input!");
 
             string[] array  = File.ReadAllLines(filename);
-
-
-
+            
+            List<string> res = new List<string>();
             List<string> matches = new List<string>();
 
             int inputStrLenght = start.Length, 
@@ -51,23 +50,28 @@ namespace Module_01
             int j = posFirst;
             string firstChar = array[j].Substring(0, start.Length);
 
-            while (firstChar == start) { 
-            if (firstChar == start) {
-                matches.Add(array[j]);
+            while (firstChar == start && j < array.Length) { 
+
+                if(res.Contains(array[j])){
+                    if (firstChar == start) {
+                        matches.Add(array[j]);
+                        j++;
+                        firstChar = array[j].Substring(0, inputStrLenght);
+                    }   
+                }
+                else{
+                    res.Add(array[j]);
+                    j++;
+                    firstChar = array[j].Substring(0, inputStrLenght);
+                }
             }
-                j++;
-                firstChar = array[j].Substring(0, inputStrLenght);
-            } 
-                
             if (matches.Count > 0)
             {
                 return string.Join(" ", matches);
             }
-            else {
-                
+            else {   
                 return "No duplicates found.";
             }
-
         }
     }
 }
