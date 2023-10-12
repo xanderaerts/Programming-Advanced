@@ -20,11 +20,11 @@ namespace Module_02{
             
             try
             {
-                Console.Write($"{assignment.Sapce(input)}");
+                Console.Write($"{assignment.Space(opslag)}");
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);    
+                Console.WriteLine("Crazy input!");    
             }
 
         }
