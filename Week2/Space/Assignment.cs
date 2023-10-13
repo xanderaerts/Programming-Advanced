@@ -14,7 +14,6 @@ namespace Module_02
             int startTS = 4, startFragment = 18;
     
             string output="",temp;
-            bool reading = true;
 
             string[] list = input.Split("\n");
             List<Message> outputList = new List<Message>();
