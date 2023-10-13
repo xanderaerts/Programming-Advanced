@@ -4,9 +4,9 @@ using TM.ProgrammingAdvanced;
 namespace Recursion{
     internal class Program{
         static void Main(string[] args){
-           // string folder = Data.Folders(@"C:\");
+            //string folder = Data.Folders(@"./DataFolders");
 
-            string folder = @"C:\5gute21pgkr";
+            string folder = @"./DataFolders";
 
             FindKey keyfinder = new FindKey();
 
