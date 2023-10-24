@@ -1,8 +1,5 @@
 using System;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.Linq.Expressions;
-using System.Net.NetworkInformation;
 
 namespace Module_03 
 {
@@ -10,36 +7,49 @@ namespace Module_03
     {  
         public int amountParkingSpots {get;set;}
         public LinkedList cars = new LinkedList();
+        private int parkedCarsCounter {get;set;} = 0;
 
         public string Parking(string input){
 
-            string[] timeStamps = input.Split(" ");
+            int carsWithNoPlace = 0;
 
-            foreach(string ts in timeStamps){
+            foreach(string ts in input.Split(" ")){
                 string[] rawinput = ts.Split(":");
 
                 int timeStamp,ParkingDuration;
-
                 try{
                     timeStamp = Int32.Parse(rawinput[0]);
                     ParkingDuration = Int32.Parse(rawinput[1]);
+
                 }
                 catch{
-                    throw new Exception("Crazy input!");
-                }               
+                    throw new Exception();
+                }
 
-                cars.Insert(new Node(timeStamp,ParkingDuration));
+                Node parkedCar = this.cars.Head;
+                Node latest = new Node(timeStamp,ParkingDuration);
+
+                for(int i = 0; i < this.parkedCarsCounter; i++){
+                    checkCarsLeaving(parkedCar,latest);
+
+                    parkedCar = parkedCar.Next;
+                }
+
+                if(parkedCarsCounter < this.amountParkingSpots){ 
+                    cars.Insert(latest);
+                    this.parkedCarsCounter++;
+                }
+                else{carsWithNoPlace++;}
+
             }
 
+            return carsWithNoPlace.ToString();
+            }
 
-            return "test";
-        }
-
-        public void checkCarsLeaving(Node current){
-            Node last = this.cars.Last();
-
-            if(last.TimeStamp > current.TimeStamp){
-
+        public void checkCarsLeaving(Node parkedCar,Node latest){
+            if(parkedCar != latest && latest.TimeStamp > (parkedCar.TimeStamp + parkedCar.ParkingDuration)){
+                this.cars.Remove(parkedCar.TimeStamp);
+                this.parkedCarsCounter--;
             }
         }
     }

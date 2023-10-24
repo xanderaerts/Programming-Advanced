@@ -40,7 +40,7 @@ namespace Module_03
 
         public void Insert(Node node){
             if(this.Head == null){
-                this.Head = null;
+                this.Head = node;
             }
             else{
                 Last().Next = node; 

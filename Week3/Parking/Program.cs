@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 
 namespace Module_03{
     internal class Program{
@@ -13,7 +12,6 @@ namespace Module_03{
             try{
                 int amountParkingSpots = Int32.Parse(inputParkingSpotsRaw);
                 assignment.amountParkingSpots = amountParkingSpots;
-
                 Console.WriteLine(assignment.Parking(inputTimeStamps));
             }
             catch{
