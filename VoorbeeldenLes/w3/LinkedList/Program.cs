@@ -50,8 +50,6 @@
                 Console.WriteLine(snoep);
                 Console.WriteLine(snoep.Pop());
                 Console.WriteLine(snoep);
-                //Console.WriteLine(snoep.Pop());
-               //Console.WriteLine(snoep);
             }
             catch(Exception e){
                 Console.WriteLine(e.Message);
