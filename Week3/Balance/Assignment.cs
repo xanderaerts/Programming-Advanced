@@ -24,19 +24,14 @@ namespace Module_03
                 }
             }
 
-            if(this.bracketsOpen.top > this.bracketsClose.top){
+            if(this.bracketsOpen.top == this.bracketsClose.top && checkBalanced()){
+                return "Balanced expression!";
+            }
+            else if(this.bracketsOpen.top > this.bracketsClose.top && checkBalanced()){
                 return "Too many open symbols";
             }
-            else if(this.bracketsOpen.top < this.bracketsClose.top){
+            else if(this.bracketsOpen.top < this.bracketsClose.top && checkBalanced()){
                 return "Too many close symbols";
-            }
-            else if(this.bracketsOpen.top == this.bracketsClose.top){
-                if(checkBalanced()){
-                    return "Balanced expression!";
-                }
-                else{
-                    return "Not balanced expression";
-                }
             }
             return "Not balanced expression";                
        }
@@ -46,7 +41,15 @@ namespace Module_03
 
         bool check = true;
 
-            while(bracketsOpen.top > 0 ){
+
+        while(bracketsOpen.top != bracketsClose.top){
+            if(bracketsOpen.top > bracketsClose.top){
+                this.bracketsOpen.Pop();
+            }
+            else{this.bracketsClose.Pop();};
+        }
+
+            while(bracketsOpen.top > 0 && bracketsClose.top > 0 ){
                 string open = this.bracketsOpen.Pop();
                 string close = this.bracketsClose.Pop();
 
@@ -68,11 +71,12 @@ namespace Module_03
                 }
 
                 if(close == opposite){
-                    check = false;
-                }
-                else{
                     check = true;
                 }
+                else{
+                    check = false;
+                }
+
             }
                 return check;
 
