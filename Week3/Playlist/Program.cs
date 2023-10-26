@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace Module_03{
     internal class Program{
@@ -8,8 +9,13 @@ namespace Module_03{
             string actions = Console.ReadLine();
             string startSong = Console.ReadLine();
 
-            PlayList playList = new PlayList(songs,actions,startSong);
-
+            try{
+                PlayList playList = new PlayList(songs,actions,startSong);
+                Console.WriteLine(playList.doActions());
+            }
+            catch{
+                Console.WriteLine("Crazy input!");
+            }
 
         }
     }

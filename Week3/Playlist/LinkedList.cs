@@ -17,12 +17,17 @@ namespace Module_03
 
         public void Insert(Node node){
             if(this.Head == null) {
+                node.Next = node;
+                node.Previvous = node;
                 this.Head = node;
             }
             else{
-                Node prev = this.Head.Previvous;
+                Node lastNode = this.Head.Previvous;
+
+                lastNode.Next = node;
+                node.Previvous = lastNode;
                 node.Next = this.Head;
-                node.Previvous = prev;
+                this.Head.Previvous = node;
 
             }
         }
@@ -49,19 +54,19 @@ namespace Module_03
             }
         }
 
-        public bool Search(string data){
+        public Node Search(string data){
             Node iterator = this.Head;
 
             do{
 
                 if(iterator.Data == data){
-                    return true;
+                    return iterator;
                 }
 
                 iterator = iterator.Next;
             }while(iterator != this.Head);
 
-            return false;
+            return null;
         }
     }
 }
