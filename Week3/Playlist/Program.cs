@@ -9,7 +9,10 @@ namespace Module_03{
             string actions = Console.ReadLine();
             string startSong = Console.ReadLine();
 
+
+
             try{
+                if(songs == "" || actions == "" || startSong == "") throw new Exception();
                 PlayList playList = new PlayList(songs,actions,startSong);
                 Console.WriteLine(playList.doActions());
             }

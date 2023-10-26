@@ -44,18 +44,36 @@ namespace Module_03
             
             foreach(string action in this.InputActions.Split(" ")){
                 if(action == "next"){
-                    playingSongs += " " + this.Next();
+                    string NextSong = this.Next();
+                   if(this.currentSong != null && NextSong != null) playingSongs += " " + NextSong;
                 }
                 else if(action == "previous"){
                     playingSongs += " " + this.Previous();
                 }
                 else if(action.StartsWith("add:")){
                     string song = action.Substring(4);
+                    
+                    if(song == "") throw new Exception();
+                    
                     this.Add(song);
-                    this.Next();
                 }
                 else if(action.StartsWith("remove:")){
+                    string song = action.Substring(7);
+                    this.Remove(song);
+                    
+                    if(song == "") throw new Exception();
 
+                    if(Songs.Head.Data == null && Songs.Head.Next == null){
+                        this.currentSong = null;
+                    }
+                    continue;
+                }
+                else{
+                    throw new Exception();
+                }
+
+                if(Songs.Head.Data == null && Songs.Head.Next == null){
+                    playingSongs += " empty";
                 }
             }
 
@@ -64,8 +82,15 @@ namespace Module_03
         }
 
         public string Next(){
-            Node next = this.currentSong.Next;
-            this.currentSong = next;
+
+            if(this.currentSong == null){
+                this.currentSong =  Songs.Head;
+            }else{
+                Node next = this.currentSong.Next;
+                this.currentSong = next;
+            }
+
+            if(currentSong == null) return null;
             return currentSong.Data;
         }
 
@@ -78,6 +103,8 @@ namespace Module_03
         public void Add(string data){
             this.Songs.Insert(new Node(data));            
         }
-        public void Remove(string data){}       
+        public void Remove(string data){
+            this.Songs.Remove(data);
+        }       
     }
 }

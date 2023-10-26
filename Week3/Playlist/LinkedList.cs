@@ -33,21 +33,26 @@ namespace Module_03
         }
 
         public void Remove(string data){
-            Node iterator = this.Head;
-            bool found = false;
-            do{
+            Node found = this.Search(data);
 
-                if(iterator.Data == data){
-                    found = true;
-                    break;
+            if(found != null){
+                Node prev = found.Previvous;
+                Node next = found.Next;
+
+                if(prev == next && prev != found.Previvous && next != found.Next){
+                    this.Head.Data = prev.Data;
+                    this.Head.Previvous = prev;
+                    this.Head.Next = prev;
+                    //prev.Previvous = prev;
+                   // prev.Next = prev;
+                    return; 
                 }
-
-                iterator = iterator.Next;
-            }while(iterator != this.Head);
-
-            if(found){
-                Node prev = iterator.Previvous;
-                Node next = iterator.Next;
+                else if(prev == next && prev == found && next == found){
+                   this.Head.Data = null;
+                   this.Head.Next = null; 
+                   this.Head.Previvous = null;
+                   return;
+                }
 
                 prev.Next = next;
                 next.Previvous = prev;
