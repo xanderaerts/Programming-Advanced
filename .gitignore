@@ -12,6 +12,9 @@
 *.user
 *.sln.docstates
 
+PA-CheatSheet.pdf
+C#-CheatSheet.pdf
+
 # Build results
 [Dd]ebug/
 [Rr]elease/

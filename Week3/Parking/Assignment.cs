@@ -1,56 +1,55 @@
 using System;
 using System.Linq.Expressions;
+using System.Xml.Serialization;
 
 namespace Module_03 
 {
     public class Assignment
     {  
         public int amountParkingSpots {get;set;}
-        public LinkedList cars = new LinkedList();
         private int parkedCarsCounter {get;set;} = 0;
 
         public string Parking(string input){
 
             int carsWithNoPlace = 0;
+            int[] cars = new int[amountParkingSpots];
 
             foreach(string ts in input.Split(" ")){
                 string[] rawinput = ts.Split(":");
 
-                int timeStamp,ParkingDuration;
+                int timeStamp,ParkingDuration,parkingEndTime;
                 try{
                     timeStamp = Int32.Parse(rawinput[0]);
                     ParkingDuration = Int32.Parse(rawinput[1]);
+                    parkingEndTime = timeStamp+ParkingDuration;
 
                 }
                 catch{
                     throw new Exception();
                 }
 
-                Node parkedCar = this.cars.Head;
-                Node latest = new Node(timeStamp,ParkingDuration);
 
-                for(int i = 0; i < this.parkedCarsCounter; i++){
-                    checkCarsLeaving(parkedCar,latest);
+                bool carAdded = false;
 
-                    parkedCar = parkedCar.Next;
+                for(int i = 0; i < cars.Length; i++){
+                    if(cars[i] < timeStamp && cars[i] != 0){
+                        cars[i] = 0;
+                        parkedCarsCounter--;
+                        //i--;
+                    }
+                    if(parkedCarsCounter < amountParkingSpots && cars[i] == 0 && !carAdded){
+                        cars[i] = parkingEndTime;
+                        parkedCarsCounter++;
+                        carAdded = true;
+                    }
+                    else if(parkedCarsCounter >= amountParkingSpots && !carAdded && i >= amountParkingSpots-1){
+                        carsWithNoPlace++;
+                        break;
+                    }
+
                 }
-
-                if(parkedCarsCounter < this.amountParkingSpots){ 
-                    cars.Insert(latest);
-                    this.parkedCarsCounter++;
-                }
-                else{carsWithNoPlace++;}
-
             }
-
             return carsWithNoPlace.ToString();
             }
-
-        public void checkCarsLeaving(Node parkedCar,Node latest){
-            if(parkedCar != latest && latest.TimeStamp > (parkedCar.TimeStamp + parkedCar.ParkingDuration)){
-                this.cars.Remove(parkedCar.TimeStamp);
-                this.parkedCarsCounter--;
-            }
-        }
     }
 }
