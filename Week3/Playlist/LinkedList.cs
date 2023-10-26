@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 
 namespace Module_03
 {
@@ -10,64 +11,55 @@ namespace Module_03
             Head = null;
         }
 
-        public LinkedList(Node head){
-            this.Head = head;
-        }
-
-        public Node Last(){
-            Node iterator = Head;
-
-            while(iterator.Next != null){
-                iterator = iterator.Next;
-            }
-
-            return iterator;
+        public LinkedList(Node node){
+            this.Head = node;
         }
 
         public void Insert(Node node){
-            if(this.Head == null){
+            if(this.Head == null) {
                 this.Head = node;
             }
             else{
-                Last().Next = node; 
-                Last().Previvous = node;
+                Node prev = this.Head.Previvous;
+                node.Next = this.Head;
+                node.Previvous = prev;
+
             }
         }
 
         public void Remove(string data){
-            if(this.Head.Data == data){
-                Head = Head.Next;
-                return;
-            }
-            else{
-                Node current = this.Head;
-                Node previous = null;
+            Node iterator = this.Head;
+            bool found = false;
+            do{
 
-                while(current != null && current.Data != data){
-                    previous = current;
-                    current = current.Next;
+                if(iterator.Data == data){
+                    found = true;
+                    break;
                 }
 
-                if(current == null){
-                    return;
-                }
-                else{
-                    previous.Next = current.Next;
-                }
+                iterator = iterator.Next;
+            }while(iterator != this.Head);
+
+            if(found){
+                Node prev = iterator.Previvous;
+                Node next = iterator.Next;
+
+                prev.Next = next;
+                next.Previvous = prev;
             }
         }
 
         public bool Search(string data){
             Node iterator = this.Head;
 
-            while(iterator != null){
+            do{
 
                 if(iterator.Data == data){
                     return true;
                 }
 
                 iterator = iterator.Next;
-            }
+            }while(iterator != this.Head);
 
             return false;
         }

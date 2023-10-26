@@ -35,7 +35,6 @@ namespace Module_03
                     if(cars[i] < timeStamp && cars[i] != 0){
                         cars[i] = 0;
                         parkedCarsCounter--;
-                        //i--;
                     }
                     if(parkedCarsCounter < amountParkingSpots && cars[i] == 0 && !carAdded){
                         cars[i] = parkingEndTime;

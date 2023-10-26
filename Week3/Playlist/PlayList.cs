@@ -10,12 +10,23 @@ namespace Module_03
         public Node(string data ){
             this.Data = data;
             this.Next = null;
+            this.Previvous = null;
         }
     }
 
 
     public class PlayList
     {
+        public string Songs {get;set;}
+        public string Actions {get;set;}
+        public string StartSong {get;set;}
+
+        public PlayList(string songs,string actions,string startSong){
+            this.Songs = songs;
+            this.Actions = actions;
+            this.StartSong = startSong;            
+        }
+
         public string Next(){}
 
         public void Add(string data){}
