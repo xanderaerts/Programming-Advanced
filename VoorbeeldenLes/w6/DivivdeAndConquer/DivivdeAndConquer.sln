@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DivivdeAndConquer", "DivivdeAndConquer.csproj", "{3DBE6924-20C7-4C7C-9BDB-C89ADC5AD833}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3DBE6924-20C7-4C7C-9BDB-C89ADC5AD833}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DBE6924-20C7-4C7C-9BDB-C89ADC5AD833}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DBE6924-20C7-4C7C-9BDB-C89ADC5AD833}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DBE6924-20C7-4C7C-9BDB-C89ADC5AD833}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0796DC25-19E1-437B-A08D-16398888EAE8}
+	EndGlobalSection
+EndGlobal
