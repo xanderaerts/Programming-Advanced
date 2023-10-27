@@ -1,52 +1,46 @@
 using System;
 using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
 using System.Xml.Serialization;
-
+using System.Collections.Generic;
 namespace Module_03 
 {
     public class Assignment
     {  
         public int amountParkingSpots {get;set;}
-        private int parkedCarsCounter {get;set;} = 0;
-
         public string Parking(string input){
 
             int carsWithNoPlace = 0;
-            int[] cars = new int[amountParkingSpots];
+            List<int> cars = new List<int>();
 
-            foreach(string ts in input.Split(" ")){
-                string[] rawinput = ts.Split(":");
+            for(int i = 0; i < amountParkingSpots; i++){
+                cars.Add(-1);
+            }
+
+            string[] ts = input.Split(" ");
+            for(int j = 0; j < ts.Length;j++){
+                string[] rawinput = ts[j].Split(":");
 
                 int timeStamp,ParkingDuration,parkingEndTime;
-                try{
-                    timeStamp = Int32.Parse(rawinput[0]);
-                    ParkingDuration = Int32.Parse(rawinput[1]);
-                    parkingEndTime = timeStamp+ParkingDuration;
-
-                }
-                catch{
-                    throw new Exception();
-                }
-
+                
+                timeStamp = Int32.Parse(rawinput[0]);
+                ParkingDuration = Int32.Parse(rawinput[1]);
+                parkingEndTime = timeStamp+ParkingDuration;
 
                 bool carAdded = false;
 
-                for(int i = 0; i < cars.Length; i++){
-                    if(cars[i] < timeStamp && cars[i] != 0){
-                        cars[i] = 0;
-                        parkedCarsCounter--;
-                    }
-                    if(parkedCarsCounter < amountParkingSpots && cars[i] == 0 && !carAdded){
+                for(int i = 0; i < this.amountParkingSpots; i++){
+                    
+                    if(cars[i] < timeStamp){
+
                         cars[i] = parkingEndTime;
-                        parkedCarsCounter++;
                         carAdded = true;
-                    }
-                    else if(parkedCarsCounter >= amountParkingSpots && !carAdded && i >= amountParkingSpots-1){
-                        carsWithNoPlace++;
                         break;
                     }
-
+             
                 }
+                if(!carAdded) carsWithNoPlace++;
+
             }
             return carsWithNoPlace.ToString();
             }
