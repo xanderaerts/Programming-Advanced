@@ -3,6 +3,7 @@ using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using System.Xml.Serialization;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 namespace Module_03 
 {
     public class Assignment
@@ -11,10 +12,10 @@ namespace Module_03
         public string Parking(string input){
 
             int carsWithNoPlace = 0;
-            List<int> cars = new List<int>();
+            int[] cars = new int[amountParkingSpots];
 
             for(int i = 0; i < amountParkingSpots; i++){
-                cars.Add(-1);
+                cars[i] = -1;
             }
 
             string[] ts = input.Split(" ");
