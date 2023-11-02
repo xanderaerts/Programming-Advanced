@@ -8,23 +8,45 @@ namespace Module_05
             List<string> anwser = new List<string>(); 
             List<string> results = new List<string>();
 
-            string list = "";
+            foreach(string input in inputString.Split(" ")){
 
-            CreateSubset(input, 0,results,list);
+                int amountOptions = (int)Math.Pow(2,input.Length-1);
 
-            return anwser; 
+                for(int i = amountOptions; i >= 0; i--){
+
+                    string ibin = Convert.ToString(i,2).PadLeft(input.Length-1,'0');
+
+                    string newString = input;
+                    int spacesAdded = 0;
+
+                    for(int j = 0; j < input.Length-1; j++){
+
+                        if(ibin[j] == '1'){
+                            newString = newString.Insert(j+1 + spacesAdded," ");
+                            spacesAdded++;
+                        }
+                    }
+
+                    foreach(string word in newString.Split(" ")){
+                        if(!results.Contains(word)) {
+                            results.Add(word);
+                            if(words.Contains(word)) this.anwser.Add(word);
+                        }
+                    }
+                }
+
+                results.Clear();
+            }
         }
 
-
-        public void CreateSubset(string input,int index ,List<string> results,string subset){
-            results.Add(subset);
-
-            for(int i = index; i < input.Length; i++){
-                subset += input.Substring(i,1);
-                CreateSubset(input,i+1, results,subset);
-                subset = subset.Remove(subset.Length-1,1);
+        public override string ToString()
+        {
+            string output = "";
+            foreach(string w in this.anwser){
+                output +=  w + " ";
             }
-
+            if(output.Length > 0) return output.Remove(output.Length-1);
+            else return null;
         }
     }
 }

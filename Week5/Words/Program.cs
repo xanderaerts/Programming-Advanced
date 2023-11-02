@@ -10,7 +10,12 @@ namespace Module_05{
             Assignment assignment = new Assignment();
 
             try{
-                Console.WriteLine(assignment.SearchWords(words,input));
+               // input = input.Replace(" ","");
+                input = input.ToLower();
+               
+                assignment.SearchWords(words,input);
+                Console.WriteLine(assignment);
+                
             }
             catch{
                 Console.WriteLine("Crazy input!");
