@@ -1,11 +1,14 @@
+using System.Collections.Generic;
 using System;
-
+using System.Linq;
 namespace Module_05
 {
     public class Assignment
     {
-        public List<string> SearchWords(List<string> words,string input){
-            List<string> anwser = new List<string>(); 
+
+        public List<string> anwser = new List<string>();
+
+        public void SearchWords(List<string> words,string inputString){
             List<string> results = new List<string>();
 
             foreach(string input in inputString.Split(" ")){
@@ -34,8 +37,6 @@ namespace Module_05
                         }
                     }
                 }
-
-                results.Clear();
             }
         }
 
