@@ -23,10 +23,11 @@ namespace BackTracking
             for(int i = 0; i < this.n; i++){
                 if(IsSave(i,col)){
                     this.board[i,col] = 1;
-                  //  Console.WriteLine(this);
+                    Console.WriteLine(this);
                     bool result = Solve(col + 1);
                     if(result) return true;
                     this.board[i,col] = 0;
+                    Console.WriteLine(this);
                 }
             }
 

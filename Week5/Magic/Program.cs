@@ -7,10 +7,12 @@ namespace Module_05{
             
             try{
                 int input = Int32.Parse(Console.ReadLine());
-                if(input <= 2) throw new Exception();
-                MagicSquare magicSquare = new MagicSquare(input);
-                magicSquare.Create(1,1,0);
-                Console.WriteLine(magicSquare);
+                if(input % 2 == 0) Console.WriteLine();
+                else{
+                    MagicSquare magicSquare = new MagicSquare(input);
+                    magicSquare.Create(1,1,0);
+                    Console.WriteLine(magicSquare);
+                }
             }
             catch{
                 Console.WriteLine("Crazy input!");
