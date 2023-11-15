@@ -15,7 +15,8 @@ namespace Module_06{
             Assignment assignment = new Assignment();
             
             try{
-                Console.WriteLine(assignment.SearchWords(words,input));
+                if(input != "")Console.WriteLine(assignment.SearchWords(words,input));
+                else throw new Exception();
             }
             catch{
                 Console.WriteLine("Crazy input!");
