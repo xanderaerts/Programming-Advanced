@@ -8,6 +8,7 @@ namespace Module_08
     {
 
         private int AmountNodes;
+        private int AmountEdges;
         public bool cyclic {get;set;}
 
         public List<int>[] graph {get;set;}
@@ -29,6 +30,7 @@ namespace Module_08
             string inputEdges = Console.ReadLine();
 
             int amoutEdges = Int32.Parse(inputEdges.Substring(0,1));
+            this.AmountEdges = amoutEdges;
 
             int start = 0;
 
@@ -65,7 +67,7 @@ namespace Module_08
                     validateCyclic(node,visited);
                    
                 }
-                else if(visited.Count <= this.AmountNodes)
+                else if(visited.Count < this.AmountNodes || (this.AmountNodes == 1 && this.AmountEdges == 1))
                 {
                     this.cyclic = true;
                     break;
