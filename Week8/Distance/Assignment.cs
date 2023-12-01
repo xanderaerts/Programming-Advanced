@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Metadata;
-using System.Xml;
+
 
 namespace Module_08 
 {
@@ -11,7 +10,6 @@ namespace Module_08
 
         private int AmountNodes;
         private int AmountEdges;
-        private int StartNode;
 
         public List<int>[] graph {get;set;}
 
@@ -41,44 +39,30 @@ namespace Module_08
 
                 AddEdge(p1,p2);
             }
-            string startpoint = Console.ReadLine();
-            this.StartNode = Int32.Parse(startpoint);
 
-            CalcDistances();
-        }
+            List<int> visited = new List<int>();
 
-
-
-       public void CalcDistances(){
-            Queue<int> queue = new Queue<int>();
-            int[] distaneces = new int[this.AmountNodes];
-
+            int count = 0;
             for(int i = 0; i < this.AmountNodes; i++){
-                distaneces[i] = -1;
-            }
-
-            distaneces[this.StartNode] = 0;
-
-            queue.Enqueue(this.StartNode);
-
-            while(queue.Count > 0){
-                int node = queue.Dequeue();
-
-                foreach(var next in this.graph[node]){
-                    if(distaneces[next] == -1 ){
-                        
-                        distaneces[next] = distaneces[node] + 1 ;
-                        queue.Enqueue(next);
-                    }
+                if(!visited.Contains(i)){
+                    DFSearch(i,visited);
+                    count++;
                 }
             }
 
-            string output = "";
-            foreach(var dist in distaneces){
-                output += dist + " ";
-            }
+            Console.WriteLine(count);
+        }
 
-            Console.WriteLine(output.Trim());
+        public void DFSearch(int node,List<int> visited)
+        {
+            if (!visited.Contains(node))
+            {
+                visited.Add(node);
+                foreach (var vr in graph[node])
+                {
+                    DFSearch(vr,visited);
+                }
+            }
         }
 
 
