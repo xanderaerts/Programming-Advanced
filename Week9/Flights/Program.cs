@@ -9,7 +9,7 @@ namespace Module_09{
             }
 
             catch(Exception e){
-                Console.WriteLine("Crazy input!",e);
+                Console.WriteLine("Crazy input!" + e);
             }
         }
     }
