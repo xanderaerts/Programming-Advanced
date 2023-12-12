@@ -32,8 +32,8 @@ namespace Module_09
 
             for(int i = 0; i < amoutEdges; i++){
                 string[] edges = Console.ReadLine().Split(", ");
-                string p1 = edges[0];
-                string p2 = edges[1];
+                string p1 = edges[0].Trim();
+                string p2 = edges[1].Trim();
                 int weight = Int32.Parse(edges[2]);
                 AddEdge(p1,p2,weight);
             }
