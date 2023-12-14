@@ -6,8 +6,8 @@ namespace Module_10
     public class Assignment
     {
         public Node Root { get; private set; }
-        private int LeftCounter=0; 
-        private int RightCounter=0;
+        private int LeftCounter=1; 
+        private int RightCounter=1;
 
         public Assignment()
         {
@@ -42,12 +42,14 @@ namespace Module_10
                 testnode = testnode.Left;
             }
 
+            testnode = this.Root;
+
             while(testnode.Right != null){
                 this.RightCounter++;
 
                 testnode = testnode.Right;
             }
-
+            
             int abs = Math.Abs(this.LeftCounter - this.RightCounter); 
             if(abs <= 1) Console.WriteLine("balanced");
             else Console.WriteLine("not balanced");
