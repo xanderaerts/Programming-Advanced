@@ -28,7 +28,7 @@ namespace Module_10
         
             string[] nodes = rawIn.Split(" ");
 
-            for(int i = 1; i < nodes.Length; i++){
+            for(int i = 0 ; i < nodes.Length; i++){
                 int nd = Int32.Parse(nodes[i]);
 
                 Add(nd);     

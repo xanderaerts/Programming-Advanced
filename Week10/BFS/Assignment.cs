@@ -1,5 +1,6 @@
 using System;
 using System.Linq.Expressions;
+using System.Collections.Generic;
 
 namespace Module_10
 {
@@ -9,46 +10,45 @@ namespace Module_10
 
         public void Start()
         {
-          /*  string rawIn = "";
+            string rawIn = "";
          
             rawIn = Console.ReadLine();
 
             if(string.IsNullOrEmpty(rawIn)) Environment.Exit(0);
 
             rawIn =  rawIn.TrimStart();
-
-            string aORd = rawIn.Substring(0,1);
         
-            string[] nodes = rawIn.Split(" "); */
+            string[] nodes = rawIn.Split(" "); 
             
-           string[] nodes = new string[]{"10","3","5","2","12","11"};
-
-            for(int i = 1; i < nodes.Length; i++){
+          
+            for(int i = 0; i < nodes.Length; i++){
                 int nd = Int32.Parse(nodes[i]);
 
                 Add(nd);     
             } 
 
             BFS();
-
         }
 
-        private void BFS(){            
-            Node Left = this.Root.Left; 
-            Node Right = this.Root.Right; 
+        private void BFS(){
+            Queue<Node> queue = new Queue<Node>();
 
-            Console.Write(this.Root.Value);
+            queue.Enqueue(this.Root);
+            
+            while(queue.Count > 0){
 
-            do{
+                Node node = queue.Dequeue();
 
-                Console.Write(" "+ Left.Value + " " + Right.Value);
+                Console.Write(node.Value + " ");
 
+                if(node.Left != null){
+                    queue.Enqueue(node.Left);
+                }
 
-                if(Left != null)   Left = Left.Left; 
-                if(Right != null) Right = Right.Right;
-
-
-            }while(Left != null && Right != null);
+                if(node.Right != null){
+                    queue.Enqueue(node.Right);
+                }
+            }
         }
 
         public void Add(int value)
