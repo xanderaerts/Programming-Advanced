@@ -18,6 +18,10 @@ namespace Module_10
             do{
                 rawIn = Console.ReadLine();
 
+                if(string.IsNullOrEmpty(rawIn)) Environment.Exit(0);
+
+               rawIn =  rawIn.TrimStart();
+
                 string aORd = rawIn.Substring(0,1);
 
                 if(aORd == "A"){
@@ -49,6 +53,7 @@ namespace Module_10
                 }
 
             }while(!string.IsNullOrWhiteSpace(rawIn));
+
         }
 
         public void Delete(int NodeValue){
