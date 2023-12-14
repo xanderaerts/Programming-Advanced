@@ -8,8 +8,8 @@ namespace Module_10{
                 
                 assignment.Start();
             }
-            catch(Exception e){
-                Console.WriteLine("Crazy input!"+e);
+            catch{
+                Console.WriteLine("Crazy input!");
             }
         }
     }
